@@ -48,8 +48,7 @@ class DynamicFormBuilder extends React.Component {
 
     static flatInputs(entity) {
         return (
-            entity
-                .flat()
+          flatten(entity)
         )
     }
 
@@ -344,13 +343,13 @@ class DynamicFormBuilder extends React.Component {
     getInputValidationError(inputName) {
         const { validationErrors } = this.state;
         const { formErrors } = this.props;
-      
+
         const validationError = validationErrors[inputName];
         const propError = formErrors[inputName];
-        
+
         return (validationError && validationError !== true) ? validationError : propError;
     }
-    
+
     submitForm() {
         const { form } = this.state;
         const { onSubmit } = this.props;
